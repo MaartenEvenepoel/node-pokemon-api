@@ -1,0 +1,13 @@
+# Dependencies
+node_modules/
+
+# Typescript build
+dist/
+
+# Env
+.env
+*.log
+
+# Docker Volumes
+data/
+pgadmin/
