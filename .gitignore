@@ -11,3 +11,5 @@ dist/
 # Docker Volumes
 data/
 pgadmin/
+
+single_pokemon.json

@@ -1,12 +1,14 @@
 // import "reflect-metadata";
 import { DataSource } from "typeorm";
-import { Pokemon } from "./entities/pokemon";
-import { Ability } from "./entities/abilities";
-import { Move } from "./entities/moves";
-import { Sprite } from "./entities/sprites";
-import { Stat } from "./entities/stats";
-import { Type } from "./entities/types";
-import { VersionGroupDetail } from "./entities/version_group_details";
+import { Pokemon } from "./entities/pokemon.entity";
+import { Ability } from "./entities/abilities.entity";
+import { Move } from "./entities/moves.entity";
+import { Sprite } from "./entities/sprites.entity";
+import { Stat } from "./entities/stats.entity";
+import { Type } from "./entities/type.entity";
+import { VersionGroupDetail } from "./entities/version_group_detail.entity";
+
+
 
 export const appDataSource = new DataSource({
     type: "postgres",
@@ -18,4 +20,4 @@ export const appDataSource = new DataSource({
     entities: [Pokemon, Ability, Move, Sprite, Stat, Type, VersionGroupDetail],
     synchronize: true,
     // logging: true
-})
+});

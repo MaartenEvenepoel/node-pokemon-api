@@ -9,7 +9,8 @@
   "scripts": {
     "build": "npx tsc",
     "start": "node dist/index.js",
-    "dev": "concurrently \"npx tsc --watch\" \"nodemon -q dist/index.js\""
+    "dev": "concurrently \"npx tsc --watch\" \"nodemon -q dist/index.js\"",
+    "load-database": "npx ts-node src/database/load.ts"
   },
   "dependencies": {
     "@types/dotenv-safe": "^8.1.2",
