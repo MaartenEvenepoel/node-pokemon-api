@@ -4,11 +4,11 @@ import { Sprite } from "./sprites.entity";
 import { Type } from "./type.entity";
 import { Move } from "./moves.entity";
 import { Stat } from "./stats.entity";
-import { Pokemon as PokemonJson } from "../../types/pokemon";
-import { Ability as AbilityJson } from "../../types/pokemon";
-import { Type as TypeJson } from "../../types/pokemon";
-import { Mfe as MoveJson } from "../../types/pokemon";
-import { Stat as StatJson } from "../../types/pokemon";
+import { Pokemon as PokemonJson } from "pokenode-ts";
+import { PokemonAbility as AbilityJson } from "pokenode-ts";
+import { PokemonType as TypeJson } from "pokenode-ts";
+import { PokemonMove as MoveJson } from "pokenode-ts";
+import { PokemonStat as StatJson } from "pokenode-ts";
 
 @Entity({ name: "pokemons" })
 export class Pokemon {

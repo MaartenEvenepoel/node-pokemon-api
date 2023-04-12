@@ -2,15 +2,23 @@
 import * as dotenv from 'dotenv-safe';
 dotenv.config();
 
-import { app } from './server';
+import { preloadDatabase } from './database/preloadDatabase';
 import { appDataSource } from './database/AppDataSource';
+import { args } from './utils/commandLineArgs';
+import { app } from './server';
 
 (async () => {
-    process.stdout.write("Initializing database...\n")
+    process.stdout.write("Initializing database...\n");
     await appDataSource.initialize();
-    process.stdout.write("Database initialization done.\n")
+    process.stdout.write("Database initialization done.\n");
+
+    if (args.preloadDatabase) {
+        process.stdout.write("Preloading database with pokemons..");
+        await preloadDatabase();
+    }
+
     app.listen(process.env.API_PORT, () => {
-        process.stdout.write(`Server listening on port ${process.env.API_PORT}\n`);
+        process.stdout.write(`API server listening on port ${process.env.API_PORT}\n`);
     });
 })().catch((err) => {
     console.log(err);

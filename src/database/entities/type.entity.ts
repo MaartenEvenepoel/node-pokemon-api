@@ -1,6 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from "typeorm";
+import { PokemonType as TypeJson } from "pokenode-ts";
 import { Pokemon } from "./pokemon.entity";
-import { Type as TypeJson } from "../../types/pokemon";
 
 @Entity({ name: "types" })
 export class Type {

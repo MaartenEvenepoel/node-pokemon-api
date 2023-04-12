@@ -8,9 +8,7 @@ import { Stat } from "./entities/stats.entity";
 import { Type } from "./entities/type.entity";
 import { VersionGroupDetail } from "./entities/version_group_detail.entity";
 
-
-
-export const appDataSource = new DataSource({
+export const appDataSource: DataSource = new DataSource({
     type: "postgres",
     host: process.env.DB_HOST,
     port: Number(process.env.DB_PORT),

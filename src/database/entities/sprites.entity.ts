@@ -1,5 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
-import { Sprites as SpritesJson } from "../../types/pokemon";
+import { PokemonSprites as SpritesJson } from "pokenode-ts";
 
 @Entity({ name: "sprites" })
 export class Sprite {

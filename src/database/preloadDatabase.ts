@@ -1,18 +1,15 @@
-// Load environment
-import * as dotenv from 'dotenv-safe';
-dotenv.config();
-
 // Code that can be used to load the database with pokemons starting from the given pokemons.json file.
 import all from '../../pokemons.json'
 import { Pokemon as PokemonEntity } from './entities/pokemon.entity';
-import { Pokemon as PokemonJson } from '../types/pokemon'
+import { Pokemon as PokemonJson } from 'pokenode-ts';
 import { appDataSource } from './AppDataSource';
 
-const pokemons: PokemonJson[] = (all as PokemonJson[]);
 
-(async () => {
-    await appDataSource.initialize();
-
+export async function preloadDatabase() {
+    /**
+     * Preloads the database with Pokemons loaded from the pokemons.json file in the root of the project.
+     */
+    const pokemons: PokemonJson[] = (all as PokemonJson[]);
     for (let pokemonJson of pokemons) {
         let pokemonEntity: PokemonEntity = new PokemonEntity();
         await pokemonEntity.initFromJson(pokemonJson);
@@ -23,7 +20,4 @@ const pokemons: PokemonJson[] = (all as PokemonJson[]);
             console.log(`failed to insert pokemon ${pokemonEntity.name}`);
         }
     }
-})().catch((err) => {
-    console.log(err);
-    process.exit(1);
-});
+}

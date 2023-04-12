@@ -1,6 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from "typeorm";
 import { Pokemon } from "./pokemon.entity";
-import { Ability as AbilityJson } from "../../types/pokemon";
+import { PokemonAbility as AbilityJson } from "pokenode-ts";
 
 @Entity({ name: "abilities" })
 export class Ability {
@@ -20,6 +20,7 @@ export class Ability {
     pokemon!: Pokemon;
 
     async initFromJson(abilityJson: AbilityJson) {
+
         this.ability = abilityJson.ability.name || "";
         this.is_hidden = Boolean(abilityJson.is_hidden);
         this.slot = Number(abilityJson.slot);

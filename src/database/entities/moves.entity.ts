@@ -1,7 +1,7 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany, ManyToOne } from "typeorm";
-import { VersionGroupDetail as versionGroupDetailType } from "../../types/pokemon";
 import { VersionGroupDetail } from "./version_group_detail.entity";
-import { Mfe as MoveJson } from "../../types/pokemon";
+import { PokemonMoveVersion as versionGroupDetailType } from "pokenode-ts";
+import { PokemonMove as MoveJson } from "pokenode-ts";
 import { Pokemon } from "./pokemon.entity";
 
 @Entity({ name: "moves" })
@@ -18,9 +18,9 @@ export class Move {
     @ManyToOne(() => Pokemon, (pokemon) => pokemon.moves, {onDelete: "CASCADE"})
     pokemon!: Pokemon;
 
-    async initFromJson(moveType: MoveJson) {
-        this.move = moveType.move.name || "";
-        this.version_group_details = await Promise.all(moveType.version_group_details.map(async (versionGroupDetailType: versionGroupDetailType): Promise<VersionGroupDetail> => {
+    async initFromJson(moveJson: MoveJson) {
+        this.move = moveJson.move.name || "";
+        this.version_group_details = await Promise.all(moveJson.version_group_details.map(async (versionGroupDetailType: versionGroupDetailType): Promise<VersionGroupDetail> => {
             let versionGroupDetail = new VersionGroupDetail();
             await versionGroupDetail.initFromJson(versionGroupDetailType);
             versionGroupDetail.move = this;

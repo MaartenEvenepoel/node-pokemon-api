@@ -1,6 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from "typeorm";
 import { Pokemon } from "./pokemon.entity";
-import { Stat as StatJson } from "../../types/pokemon";
+import { PokemonStat as StatJson } from "pokenode-ts";
 
 @Entity({ name: "stats" })
 export class Stat {
