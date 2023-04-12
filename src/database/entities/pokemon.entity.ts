@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany, OneToOne, JoinColumn } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany, OneToOne, JoinColumn, BaseEntity } from "typeorm";
 import { Ability } from "./abilities.entity";
 import { Sprite } from "./sprites.entity";
 import { Type } from "./type.entity";
@@ -11,7 +11,7 @@ import { PokemonMove as MoveJson } from "pokenode-ts";
 import { PokemonStat as StatJson } from "pokenode-ts";
 
 @Entity({ name: "pokemons" })
-export class Pokemon {
+export class Pokemon extends BaseEntity {
     @PrimaryGeneratedColumn()
     id!: number;
 

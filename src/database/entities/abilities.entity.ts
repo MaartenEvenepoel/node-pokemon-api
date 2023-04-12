@@ -1,9 +1,9 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, BaseEntity } from "typeorm";
 import { Pokemon } from "./pokemon.entity";
 import { PokemonAbility as AbilityJson } from "pokenode-ts";
 
 @Entity({ name: "abilities" })
-export class Ability {
+export class Ability extends BaseEntity {
     @PrimaryGeneratedColumn()
     id!: number;
 

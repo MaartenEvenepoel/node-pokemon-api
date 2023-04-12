@@ -1,8 +1,8 @@
-import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, BaseEntity } from "typeorm";
 import { PokemonSprites as SpritesJson } from "pokenode-ts";
 
 @Entity({ name: "sprites" })
-export class Sprite {
+export class Sprite extends BaseEntity {
     @PrimaryGeneratedColumn()
     id!: number;
 

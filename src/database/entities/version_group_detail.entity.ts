@@ -1,9 +1,9 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, BaseEntity } from "typeorm";
 import { PokemonMoveVersion as VersionGroupDetailJson } from "pokenode-ts";
 import { Move } from "./moves.entity";
 
 @Entity({ name: "version_group_details" })
-export class VersionGroupDetail {
+export class VersionGroupDetail extends BaseEntity {
     @PrimaryGeneratedColumn()
     id!: number;
 

@@ -1,11 +1,11 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany, ManyToOne } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany, ManyToOne, BaseEntity } from "typeorm";
 import { VersionGroupDetail } from "./version_group_detail.entity";
 import { PokemonMoveVersion as versionGroupDetailType } from "pokenode-ts";
 import { PokemonMove as MoveJson } from "pokenode-ts";
 import { Pokemon } from "./pokemon.entity";
 
 @Entity({ name: "moves" })
-export class Move {
+export class Move extends BaseEntity {
     @PrimaryGeneratedColumn()
     id!: number;
 
