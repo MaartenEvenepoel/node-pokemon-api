@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany, OneToOne, JoinColumn, BaseEntity } from "typeorm";
+import { Entity, PrimaryColumn, Column, OneToMany, OneToOne, JoinColumn, BaseEntity, ManyToMany, JoinTable, ManyToOne } from "typeorm";
 import { Ability } from "./abilities.entity";
 import { Sprite } from "./sprites.entity";
 import { Type } from "./type.entity";
@@ -12,7 +12,7 @@ import { PokemonStat as StatJson } from "pokenode-ts";
 
 @Entity({ name: "pokemons" })
 export class Pokemon extends BaseEntity {
-    @PrimaryGeneratedColumn()
+    @PrimaryColumn()
     id!: number;
 
     @Column({unique: true})
@@ -50,6 +50,8 @@ export class Pokemon extends BaseEntity {
     form!: string;
 
     async initFromJson(pokemonJson: PokemonJson) {
+        this.id = pokemonJson.id;
+
         this.name = pokemonJson.name || "";
 
         let sprites = new Sprite();
