@@ -1,10 +1,10 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, BaseEntity } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, PrimaryColumn, Column, ManyToOne, BaseEntity } from "typeorm";
 import { PokemonType as TypeJson } from "pokenode-ts";
 import { Pokemon } from "./pokemon.entity";
 
 @Entity({ name: "types" })
 export class Type extends BaseEntity {
-@PrimaryGeneratedColumn()
+    @PrimaryGeneratedColumn()
     id!: number;
 
     @Column()

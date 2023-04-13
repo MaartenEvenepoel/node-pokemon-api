@@ -1,3 +1,8 @@
+/**
+ * Small CLI script that can be used to import specific pokemons from pokeapi into the database.
+ * Pokemons can be selected by their name or their pokeapi ID
+ */
+
 // Load environment
 import * as dotenv from 'dotenv-safe';
 dotenv.config();

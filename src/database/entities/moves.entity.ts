@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany, ManyToOne, BaseEntity } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, PrimaryColumn, Column, OneToMany, ManyToOne, BaseEntity } from "typeorm";
 import { VersionGroupDetail } from "./version_group_detail.entity";
 import { PokemonMoveVersion as versionGroupDetailType } from "pokenode-ts";
 import { PokemonMove as MoveJson } from "pokenode-ts";
@@ -12,7 +12,7 @@ export class Move extends BaseEntity {
     @Column()
     move!: string;
 
-    @OneToMany(() => VersionGroupDetail, (versionGroupDetail) => versionGroupDetail.move, {cascade: true, onDelete: "CASCADE"})
+    @OneToMany(() => VersionGroupDetail, (versionGroupDetail) => versionGroupDetail.move, {cascade: true, onDelete: "CASCADE", eager: true})
     version_group_details!: VersionGroupDetail[];
 
     @ManyToOne(() => Pokemon, (pokemon) => pokemon.moves, {onDelete: "CASCADE"})

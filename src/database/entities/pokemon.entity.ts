@@ -18,11 +18,11 @@ export class Pokemon extends BaseEntity {
     @Column({unique: true})
     name!: string;
 
-    @OneToOne(() => Sprite, {cascade: true, onDelete: "CASCADE"})
+    @OneToOne(() => Sprite, {cascade: true, onDelete: "CASCADE", eager: true})
     @JoinColumn()
     sprites!: Sprite;
     
-    @OneToMany(() => Type, (type) => type.pokemon, {cascade: true, onDelete: "CASCADE"})
+    @OneToMany(() => Type, (type) => type.pokemon, {cascade: true, onDelete: "CASCADE", eager: true})
     types!: Type[];
 
     @Column()
@@ -31,7 +31,7 @@ export class Pokemon extends BaseEntity {
     @Column()
     weight!: number;
 
-    @OneToMany(() => Move, (move) => move.pokemon, {cascade: true, onDelete: "CASCADE"})
+    @OneToMany(() => Move, (move) => move.pokemon, {cascade: true, onDelete: "CASCADE", eager: true})
     moves!: Move[];
 
     @Column()
@@ -40,10 +40,10 @@ export class Pokemon extends BaseEntity {
     @Column()
     species!: string;
 
-    @OneToMany(() => Stat, (stat) => stat.pokemon, {cascade: true, onDelete: "CASCADE"})
+    @OneToMany(() => Stat, (stat) => stat.pokemon, {cascade: true, onDelete: "CASCADE", eager: true})
     stats!: Stat[];
 
-    @OneToMany(() => Ability, (ability) => ability.pokemon, {cascade: true, onDelete: "CASCADE"})
+    @OneToMany(() => Ability, (ability) => ability.pokemon, {cascade: true, onDelete: "CASCADE", eager: true})
     abilities!: Ability[];
 
     @Column()

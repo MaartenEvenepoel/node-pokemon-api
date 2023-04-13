@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, BaseEntity } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, PrimaryColumn, Column, ManyToOne, BaseEntity } from "typeorm";
 import { PokemonMoveVersion as VersionGroupDetailJson } from "pokenode-ts";
 import { Move } from "./moves.entity";
 
