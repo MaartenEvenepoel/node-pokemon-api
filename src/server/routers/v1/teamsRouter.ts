@@ -25,7 +25,7 @@ teamsRouter.post('/', async (request: Request, response: Response) => {
 
     // Check if "name" exists in request body and if it is a string
     if (typeof(request.body.name) != "string") {
-        return response.status(400).send({error: "400", error_message: "Malformed JSON"})
+        return response.status(400).send({error: "400 Bad Request", error_message: "Malformed JSON"})
     }
 
     // Create and init the name
@@ -56,6 +56,8 @@ teamsRouter.get('/:id', async (request: Request<{id: number}>, response: Respons
  */
 teamsRouter.post('/:id', async (request: Request<{id: number}>, response: Response) => {
     const teamId: number = request.params.id;
+
+    // Check if Team exists
     const team: Team | null = await teamRepository.findOneBy({
         id: teamId
     })
@@ -63,7 +65,7 @@ teamsRouter.post('/:id', async (request: Request<{id: number}>, response: Respon
         return response.status(404).send({error: "404", error_message: "Team not found"});
     }
     if ((request.body.pokemons as number[]).length > 6) {
-        return response.status(400).send({error: "400", error_message: "Maximum pokemon limit in team exceeded. Limit is 6."});
+        return response.status(400).send({error: "400 Bad Request", error_message: "Maximum pokemon limit in team exceeded. Limit is 6."});
     }
 
     // Check if pokemons exist
@@ -74,6 +76,7 @@ teamsRouter.post('/:id', async (request: Request<{id: number}>, response: Respon
         }
     }
 
+    // Update the team with the new pokemons
     team.pokemons = (request.body.pokemons as number[]);
     await teamRepository.update({id: teamId}, team);
     return response.status(200).send(team);
