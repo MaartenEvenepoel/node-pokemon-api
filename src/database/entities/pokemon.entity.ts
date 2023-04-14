@@ -1,4 +1,4 @@
-import { Entity, PrimaryColumn, Column, OneToMany, OneToOne, JoinColumn, BaseEntity, ManyToMany, JoinTable, ManyToOne } from "typeorm";
+import { Entity, PrimaryColumn, Column, OneToMany, OneToOne, JoinColumn, BaseEntity } from "typeorm";
 import { Ability } from "./abilities.entity";
 import { Sprite } from "./sprites.entity";
 import { Type } from "./type.entity";

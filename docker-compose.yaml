@@ -25,11 +25,3 @@ services:
       - ./pgadmin:/var/lib/pgadmin
     ports:
       - 8080:80
-
-
-
-  # adminer:
-  #   image: adminer
-  #   restart: always
-  #   ports:
-  #     - 8080:8080

@@ -1,5 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, OneToMany, Column, BaseEntity, ManyToMany, JoinTable } from "typeorm";
-import { Pokemon } from "./pokemon.entity";
+import { Entity, PrimaryGeneratedColumn, Column, BaseEntity } from "typeorm";
 
 @Entity()
 export class Team extends BaseEntity {
@@ -10,9 +9,9 @@ export class Team extends BaseEntity {
     name!: string;
 
     @Column("simple-array")
-    pokemons!: number[]
+    pokemons!: number[];
 
-    @ManyToMany(() => Pokemon)
-    @JoinTable()
-    pokemonEntities!: Pokemon[];
+    // Left in comment for demo purposes for migrations
+    // @Column()
+    // test!: string;
 }

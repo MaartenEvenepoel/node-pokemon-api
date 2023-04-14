@@ -69,6 +69,8 @@ teamsRouter.post('/:id', async (request: Request<{id: number}>, response: Respon
     }
 
     // Check if pokemons exist
+    // NOTE: this should probably really be done in some other way as this is not very efficient. The correct solution would
+    // probably entail a ManyToMany relation between pokemons and teams, which there currently is not.
     for (let pokemonId of (request.body.pokemons as number[])) {
         const pokemon: Pokemon | null = await pokemonRepository.findOneBy({id: Number(pokemonId)})
         if (pokemon == null) {

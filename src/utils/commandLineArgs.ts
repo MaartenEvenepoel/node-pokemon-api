@@ -1,9 +1,9 @@
-import { parse } from 'ts-command-line-args';
+import { parse } from 'ts-command-line-args'
 
 interface Arguments {
-    preloadDatabase: boolean;
+  preloadDatabase: boolean
 }
 
 export const args = parse<Arguments>({
-    preloadDatabase: Boolean
+  preloadDatabase: Boolean
 })

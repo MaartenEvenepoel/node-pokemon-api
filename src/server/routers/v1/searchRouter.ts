@@ -1,7 +1,7 @@
 import { Router, Request, Response } from 'express';
 import { appDataSource } from '../../../database/AppDataSource';
 import { Pokemon } from '../../../database/entities/pokemon.entity';
-import { FindManyOptions, Like, SelectQueryBuilder } from 'typeorm';
+import { SelectQueryBuilder } from 'typeorm';
 
 export const searchRouter: Router = Router()
 const pokemonRepository = appDataSource.getRepository(Pokemon);

@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, PrimaryColumn, Column, ManyToOne, BaseEntity } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, BaseEntity } from "typeorm";
 import { Pokemon } from "./pokemon.entity";
 import { PokemonAbility as AbilityJson } from "pokenode-ts";
 
