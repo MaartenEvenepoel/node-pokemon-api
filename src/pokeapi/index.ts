@@ -9,7 +9,7 @@ import { args } from './commandLineArgs'
 import { type DataSource } from 'typeorm';
 
 (async () => {
-  if (args.id && args.name) {
+  if (args.id !== undefined && args.name !== undefined) {
     console.log('Please only pass either a pokemon ID or a name, not both!')
     process.exit(0)
   }
@@ -19,21 +19,21 @@ import { type DataSource } from 'typeorm';
   await appDataSource.initialize()
 
   // Import by id
-  if (args.id) {
+  if (args.id !== undefined) {
     const pokemon: Pokemon = await api.getPokemonById(args.id)
     await insertIntoDatabase(pokemon, appDataSource)
     process.stdout.write(`Inserted pokemon ${pokemon.name} with id ${pokemon.id}\n`)
   }
 
   // Import by name
-  if (args.name) {
+  if (args.name !== undefined) {
     const pokemon: Pokemon = await api.getPokemonByName(args.name)
     await insertIntoDatabase(pokemon, appDataSource)
     process.stdout.write(`Inserted pokemon ${pokemon.name} with id ${pokemon.id}\n`)
   }
 })().catch(err => { console.error(err) })
 
-async function insertIntoDatabase (pokemon: Pokemon, appDataSource: DataSource) {
+async function insertIntoDatabase (pokemon: Pokemon, appDataSource: DataSource): Promise<void> {
   const pokemonEntity: PokemonEntity = new PokemonEntity()
   await pokemonEntity.initFromJson(pokemon)
   await appDataSource.manager.save(pokemonEntity)

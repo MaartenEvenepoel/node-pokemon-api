@@ -12,8 +12,8 @@
     "dev": "nodemon --exec ts-node src/index.ts",
     "pokeapi": "npx ts-node src/pokeapi/index.ts",
     "typeorm": "typeorm-ts-node-commonjs",
-    "lint": "npx eslint ./src/**/*.ts",
-    "lint-and-fix": "npx eslint --fix ./src/**/*.ts"
+    "lint": "npx eslint ./src/",
+    "lint-and-fix": "npx eslint ./src/ --fix"
   },
   "dependencies": {
     "@types/dotenv-safe": "^8.1.2",

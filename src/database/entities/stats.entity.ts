@@ -1,27 +1,27 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, BaseEntity } from "typeorm";
-import { Pokemon } from "./pokemon.entity";
-import { PokemonStat as StatJson } from "pokenode-ts";
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, BaseEntity } from 'typeorm'
+import { Pokemon } from './pokemon.entity'
+import { type PokemonStat as StatJson } from 'pokenode-ts'
 
-@Entity({ name: "stats" })
+@Entity({ name: 'stats' })
 export class Stat extends BaseEntity {
-    @PrimaryGeneratedColumn()
-    id!: number;
+  @PrimaryGeneratedColumn()
+    id!: number
 
-    @Column()
+  @Column()
     stat!: string
 
-    @Column()
+  @Column()
     base_stat!: number
 
-    @Column()
+  @Column()
     effort!: number
 
-    @ManyToOne(() => Pokemon, (pokemon) => pokemon.stats, {onDelete: "CASCADE"})
-    pokemon!: Pokemon;
+  @ManyToOne(() => Pokemon, (pokemon) => pokemon.stats, { onDelete: 'CASCADE' })
+    pokemon!: Pokemon
 
-    async initFromJson(statJson: StatJson) {
-        this.stat = statJson.stat.name || "";
-        this.base_stat = Number(statJson.base_stat);
-        this.effort = Number(statJson.effort);
-    }
+  async initFromJson (statJson: StatJson): Promise<void> {
+    this.stat = statJson.stat.name
+    this.base_stat = Number(statJson.base_stat)
+    this.effort = Number(statJson.effort)
+  }
 }

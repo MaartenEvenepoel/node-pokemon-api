@@ -1,27 +1,27 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, BaseEntity } from "typeorm";
-import { Pokemon } from "./pokemon.entity";
-import { PokemonAbility as AbilityJson } from "pokenode-ts";
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, BaseEntity } from 'typeorm'
+import { Pokemon } from './pokemon.entity'
+import { type PokemonAbility as AbilityJson } from 'pokenode-ts'
 
-@Entity({ name: "abilities" })
+@Entity({ name: 'abilities' })
 export class Ability extends BaseEntity {
-    @PrimaryGeneratedColumn({})
-    id!: number;
+  @PrimaryGeneratedColumn({})
+    id!: number
 
-    @Column()
+  @Column()
     ability!: string
 
-    @Column()
+  @Column()
     is_hidden!: boolean
 
-    @Column()
+  @Column()
     slot!: number
 
-    @ManyToOne(() => Pokemon, (pokemon) => pokemon.abilities, {onDelete: "CASCADE"})
-    pokemon!: Pokemon;
+  @ManyToOne(() => Pokemon, (pokemon) => pokemon.abilities, { onDelete: 'CASCADE' })
+    pokemon!: Pokemon
 
-    async initFromJson(abilityJson: AbilityJson) {
-        this.ability = abilityJson.ability.name || "";
-        this.is_hidden = Boolean(abilityJson.is_hidden);
-        this.slot = Number(abilityJson.slot);
-    }
+  async initFromJson (abilityJson: AbilityJson): Promise<void> {
+    this.ability = abilityJson.ability.name
+    this.is_hidden = Boolean(abilityJson.is_hidden)
+    this.slot = Number(abilityJson.slot)
+  }
 }

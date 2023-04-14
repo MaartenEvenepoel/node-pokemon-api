@@ -4,7 +4,7 @@ import { Pokemon as PokemonEntity } from './entities/pokemon.entity'
 import { type Pokemon as PokemonJson } from 'pokenode-ts'
 import { appDataSource } from './AppDataSource'
 
-export async function preloadDatabase () {
+export async function preloadDatabase (): Promise<void> {
   /**
      * Preloads the database with Pokemons loaded from the pokemons.json file in the root of the project.
      */
