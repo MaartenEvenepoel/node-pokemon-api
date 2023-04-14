@@ -3,9 +3,6 @@ info:
   title: Pokedex API
   description: ""
   version: 1.0.0
-  contact:
-    name: Joren Vandeweyer
-    email: joren.vandeweyer@appwise.be
 servers:
   - url: "http://localhost:3000/"
 paths:
