@@ -34,7 +34,7 @@ To start the database without preloading it with data, just run:
 $ npm run start.
 ```
 
-You also use:
+You use also use:
 
 ```bash
 $ npm run dev
